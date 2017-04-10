@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.administrator.parkhere.MapsActivity">
+
+    <item
+        android:id="@+id/mapTypeOriginal"
+        android:title="@string/map_type_original"/>
+
+    <item
+        android:id="@+id/mapTypeStudent"
+        android:title="@string/map_type_student"/>
+
+    <item
+        android:id="@+id/mapTypeFaculty"
+        android:title="@string/map_type_faculty"/>
+
+</menu>
