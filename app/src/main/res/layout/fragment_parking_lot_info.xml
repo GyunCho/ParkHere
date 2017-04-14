@@ -41,7 +41,7 @@
     <RelativeLayout
         android:id="@+id/RelativeLayout4"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="70dp"
         android:layout_below="@+id/RelativeLayout3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
@@ -111,4 +111,40 @@
         android:layout_below="@+id/RelativeLayout3"
         android:layout_toEndOf="@+id/textView14"
         android:text="TextView" />
+
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/RelativeLayout4"
+        android:layout_centerHorizontal="true"
+        android:stepSize="0.5"
+        />
+
+    <Button
+        android:id="@+id/ratingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:text="Submit" />
+
+    <TextView
+        android:id="@+id/textViewRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/RelativeLayout4"
+        android:layout_centerHorizontal="true"
+        android:text="Rating" />
+
+    <Button
+        android:id="@+id/writeReviewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="VIEW A REVIEW" />
+
+
 </RelativeLayout>

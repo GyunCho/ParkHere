@@ -1,13 +1,15 @@
 package com.example.administrator.parkhere;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ParkingLotInfoFragment extends Fragment {
@@ -30,6 +32,13 @@ public class ParkingLotInfoFragment extends Fragment {
 
     private View layout;
 
+    private static RatingBar ratingBar1;
+    private static TextView textViewRating;
+    private static Button ratingButton;
+
+    private static Button writeReviewButton;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,27 +55,78 @@ public class ParkingLotInfoFragment extends Fragment {
 
             parkingLotInfo.setMarkerName(markerName);
             parkingLotName = parkingLotInfo.getParkingLotName();
-
             tx1.setText(parkingLotName);
 
             parkingLotInfo.setParkingLotAddress(markerName);
             parkingLotAddress = parkingLotInfo.getParkingLotAddress();
-
             tx2.setText(parkingLotAddress);
 
             parkingLotInfo.setParkingLotRates(markerName);
             parkingLotRates = parkingLotInfo.getParkingLotRates();
-
             tx3.setText(parkingLotRates);
 
             parkingLotInfo.setParkingLotHours(markerName);
             parkingLotHours = parkingLotInfo.getParkingLotHours();
-
             tx4.setText(parkingLotHours);
+
+        ratingBarListener();
+        ratingButtonClickListener();
+        writeReviewButtonClickListener();
 
         return layout;
     }
 
+    public void ratingBarListener() {
+        textViewRating = (TextView) layout.findViewById(R.id.textViewRating);
+        ratingBar1 = (RatingBar) layout.findViewById(R.id.ratingBar1);
+
+        ratingBar1.setOnRatingBarChangeListener(
+                new RatingBar.OnRatingBarChangeListener(){
+                    @Override
+                    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                        textViewRating.setText(String.valueOf(rating));
+                    }
+                }
+        );
+    }
+
+    public void ratingButtonClickListener(){
+        ratingBar1 = (RatingBar)layout.findViewById(R.id.ratingBar1);
+        ratingButton = (Button)layout.findViewById(R.id.ratingButton);
+
+
+        ratingButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getActivity(),
+                                String.valueOf(ratingBar1.getRating()),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+    }
+
+
+
+    public void writeReviewButtonClickListener(){
+
+        writeReviewButton = (Button)layout.findViewById(R.id.writeReviewButton);
+
+
+        writeReviewButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent newActivityIntent = new Intent(getActivity(), WriteReviewActivity.class);
+                        newActivityIntent.putExtra("message", markerName);
+                        startActivity(newActivityIntent);
+                    }
+                }
+        );
+    }
+
+    }
 
 
 /*
@@ -87,4 +147,4 @@ public class ParkingLotInfoFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
     */
-}
+

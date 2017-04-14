@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -34,6 +36,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     boolean firstSelection;
 
+    private static Button navigationButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +47,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
-
+        navigationButtonClickListener();
 
     }
-
 
 
     @Override
@@ -74,14 +76,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 String mapType = mapTypes.get(position);
 
-                if(mapType.equals("Visitor")){
+                if (mapType.equals("Visitor")) {
                     googleMap.clear();
                     VisitorMapMarkers();
-                } else if (mapType.equals("Student")){
+                } else if (mapType.equals("Student")) {
                     googleMap.clear();
                     StudentMapMarkers();
 
-                } else if (mapType.equals("Faculty")){
+                } else if (mapType.equals("Faculty")) {
                     googleMap.clear();
                     FacultyMapMarkers();
 
@@ -101,21 +103,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng templeUniversity = new LatLng(39.981349, -75.155318);
 
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(templeUniversity, 14));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(templeUniversity, 15));
 
-
-        //following lines of code make a current location button
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mMap.setMyLocationEnabled(true);
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -131,17 +120,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
     }
 
     //Following codes add a search bar onto an app and move the screen to the corresponding place
 
     public void onMapSearch(View view) {
 
-
-
         EditText locationSearch = (EditText) findViewById(R.id.searchBar);
         String location = locationSearch.getText().toString();
         List<Address> addressList = null;
+
+        String locationString;
+        LatLng templeUniversity = new LatLng(39.981349, -75.155318);
 
         if (location != null || !location.equals("")) {
             Geocoder geocoder = new Geocoder(this);
@@ -151,9 +152,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
             Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
 
         }
     }
@@ -317,4 +322,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_120mon)));
 
     }
+
+    public void navigationButtonClickListener(){
+
+        navigationButton = (Button)findViewById(R.id.navigationButton);
+
+
+        navigationButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent newActivityIntent = new Intent(MapsActivity.this, NavigationActivity.class);
+
+                        startActivity(newActivityIntent);
+                    }
+                }
+        );
+    }
+
 }

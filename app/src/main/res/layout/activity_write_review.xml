@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.parkhere.ParkingLotInfoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+<RelativeLayout
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true">
+
+</RelativeLayout>
+
+<RelativeLayout
+android:id="@+id/RelativeLayout2"
+android:layout_width="match_parent"
+android:layout_height="80dp"
+android:layout_below="@+id/RelativeLayout1"
+android:orientation="vertical"
+    >
+
+</RelativeLayout>
+
+<RelativeLayout
+android:id="@+id/RelativeLayout3"
+android:layout_width="match_parent"
+android:layout_height="80dp"
+android:orientation="vertical"
+    android:layout_below="@+id/RelativeLayout2"
+    android:layout_alignParentStart="true">
+
+</RelativeLayout>
+
+<RelativeLayout
+android:id="@+id/RelativeLayout4"
+android:layout_width="match_parent"
+android:layout_height="80dp"
+android:orientation="vertical"
+    android:layout_below="@+id/RelativeLayout3"
+    android:layout_alignParentStart="true">
+
+</RelativeLayout>
+<RelativeLayout
+android:id="@+id/RelativeLayout5"
+android:layout_width="match_parent"
+android:layout_height="80dp"
+android:orientation="vertical"
+    android:layout_below="@+id/RelativeLayout4"
+    android:layout_alignParentStart="true">
+
+</RelativeLayout>
+
+    <TextView
+        android:id="@+id/reviewTextView0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout1"
+        android:layout_marginTop="11dp"
+         />
+
+    <Button
+        android:id="@+id/completeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Complete"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="398dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp" />
+
+    <EditText
+
+        android:id="@+id/writeReviewText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Write Review"
+        android:inputType="textMultiLine"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/RelativeLayout2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/reviewTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout2"
+        android:layout_toEndOf="@+id/reviewTextView0" />
+
+    <TextView
+        android:id="@+id/reviewTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/reviewTextView0" />
+
+    <TextView
+        android:id="@+id/reviewTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout4"
+        android:layout_toEndOf="@+id/reviewTextView0" />
+
+
+</RelativeLayout>
+

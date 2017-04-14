@@ -11,6 +11,52 @@ public class ParkingLotInfo {
     private String parkingLotRates;
     private String parkingLotHours;
 
+    private String review0 = "";
+    private String review1 = "";
+    private String review2 = "";
+    private String review3 = "";
+    private String review4 = "";
+
+
+
+    public String getReview0() {
+        return this.review0;
+    }
+    public String getReview1() {
+        return this.review1;
+    }
+    public String getReview2() {
+        return this.review2;
+    }
+    public String getReview3() {
+        return this.review3;
+    }
+    public String getReview4() {
+        return this.review4;
+    }
+
+    public void setReview0(String string){
+        this.review0 = string;
+    }
+
+    public void setReview1(String string){
+        this.review1 = string;
+    }
+
+    public void setReview2(String string){
+        this.review2 = string;
+    }
+
+    public void setReview3(String string){
+        this.review3 = string;
+    }
+
+    public void setReview4(String string){
+        this.review4 = string;
+    }
+
+
+
     public ParkingLotInfo(String name) {
         this.parkingLotName = name;
     }
