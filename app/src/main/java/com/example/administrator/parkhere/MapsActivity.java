@@ -120,8 +120,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Intent intent = new Intent(MapsActivity.this, MapInfo.class);
-                startActivity(intent);
+                //put marker's name into clicked string
+                String markerName = marker.getTitle();
+
+                Intent newActivityIntent = new Intent(MapsActivity.this, MapInfo.class);
+
+                newActivityIntent.putExtra("message", markerName);
+
+                startActivity(newActivityIntent);
             }
         });
 
@@ -162,7 +168,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add markers for parking lots/garages located in Temple University
         LatLng fifteenthStreetLot = new LatLng(39.981538, -75.158967);
 
-        LatLng cecilBMooreLot = new LatLng(39.978714, -75.154765);
+        //LatLng cecilBMooreLot = new LatLng(39.978714, -75.154765);
 
         LatLng diamondStreetLot = new LatLng(39.984827, -75.156514);
 
@@ -170,17 +176,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng montgomeryGarage = new LatLng(39.981045, -75.151702);
 
-        LatLng tuttlemanLot = new LatLng(39.979805, -75.153788);
+        //LatLng tuttlemanLot = new LatLng(39.979805, -75.153788);
 
         Marker fifteenthStreetLotMarker = mMap.addMarker(new MarkerOptions().position(fifteenthStreetLot).title("")
                 .title("15th Street Lot")
                 .snippet("Reserve")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_15th_street_lot)));
 
+        /*
         Marker cecilBMooreLotMarker = mMap.addMarker(new MarkerOptions().position(cecilBMooreLot)
                 .title("Cecil B. Moore Lot")
                 .snippet("Reserve")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_4perhour)));
+         */
 
         Marker diamondStreetLotMarker
                 = mMap.addMarker(new MarkerOptions().position(diamondStreetLot)
@@ -200,11 +208,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .snippet("Reserve")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_4perhour)));
 
+        /*
         Marker tuttlemanLotMarker
                 = mMap.addMarker(new MarkerOptions().position(tuttlemanLot)
                 .title("Tuttleman Lot")
                 .snippet("Reserve")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_6perhour)));
+                */
 
     }
 
