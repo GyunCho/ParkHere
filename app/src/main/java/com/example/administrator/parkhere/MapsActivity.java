@@ -47,7 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        navigationButtonClickListener();
 
     }
 
@@ -141,8 +140,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String location = locationSearch.getText().toString();
         List<Address> addressList = null;
 
-        String locationString;
-        LatLng templeUniversity = new LatLng(39.981349, -75.155318);
+
 
         if (location != null || !location.equals("")) {
             Geocoder geocoder = new Geocoder(this);
@@ -185,7 +183,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Marker fifteenthStreetLotMarker = mMap.addMarker(new MarkerOptions().position(fifteenthStreetLot).title("")
                 .title("15th Street Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_15th_street_lot)));
 
         /*
@@ -198,19 +196,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Marker diamondStreetLotMarker
                 = mMap.addMarker(new MarkerOptions().position(diamondStreetLot)
                 .title("Diamond Street Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_15th_street_lot)));
 
         Marker liacourasGarageMarker
                 = mMap.addMarker(new MarkerOptions().position(liacourasGarage)
                 .title("Liacouras Garage")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_15th_street_lot)));
 
         Marker montgomeryGarageMarker
                 = mMap.addMarker(new MarkerOptions().position(montgomeryGarage)
                 .title("Montgomery Garage")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_4perhour)));
 
         /*
@@ -242,31 +240,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Marker tylerLotMarker
                 = mMap.addMarker(new MarkerOptions().position(tylerLot)
                 .title("Tyler Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_400semester)));
 
         Marker liacourasGarageMarker
                 = mMap.addMarker(new MarkerOptions().position(liacourasGarage)
                 .title("Liacouras Garage")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_8entry)));
 
         Marker montgomeryGarageMarker
                 = mMap.addMarker(new MarkerOptions().position(montgomeryGarage)
                 .title("Montgomery Garage")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_8entry)));
 
         Marker diamondStreetLotMarker
                 = mMap.addMarker(new MarkerOptions().position(diamondStreetLot)
                 .title("Diamond Street Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_240sem)));
 
         Marker templeTowersLotMarker
                 = mMap.addMarker(new MarkerOptions().position(templeTowersLot)
                 .title("Temple Towers Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_240sem)));
     }
 
@@ -288,56 +286,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Marker liacourasGarageMarker
                 = mMap.addMarker(new MarkerOptions().position(liacourasGarage)
                 .title("Liacouras Garage")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_8entry)));
 
         Marker montgomeryGarageMarker
                 = mMap.addMarker(new MarkerOptions().position(montgomeryGarage)
                 .title("Montgomery Garage")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_8entry)));
 
         Marker fifteenthStreetLotMarker =
                 mMap.addMarker(new MarkerOptions().position(fifteenthStreetLot)
                 .title("15th Street Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_120mon)));
 
         Marker tylerLotMarker
                 = mMap.addMarker(new MarkerOptions().position(tylerLot)
                 .title("Tyler Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_120mon)));
 
         Marker diamondStreetLotMarker
                 = mMap.addMarker(new MarkerOptions().position(diamondStreetLot)
                 .title("Diamond Street Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_120mon)));
 
         Marker templeTowersLotMarker
                 = mMap.addMarker(new MarkerOptions().position(templeTowersLot)
                 .title("Temple Towers Lot")
-                .snippet("Reserve")
+                .snippet("Info")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_120mon)));
 
     }
 
-    public void navigationButtonClickListener(){
 
-        navigationButton = (Button)findViewById(R.id.navigationButton);
-
-
-        navigationButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent newActivityIntent = new Intent(MapsActivity.this, NavigationActivity.class);
-
-                        startActivity(newActivityIntent);
-                    }
-                }
-        );
-    }
 
 }

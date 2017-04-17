@@ -1,5 +1,13 @@
 package com.example.administrator.parkhere;
 
+import android.os.AsyncTask;
+import android.provider.DocumentsContract;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
 /**
  * Created by GyunCho on 4/13/17.
  */
@@ -155,6 +163,31 @@ public class ParkingLotInfo {
         } else if (markerName.equals("Temple Towers Lot")) {
             this.parkingLotHours = "MONDAY-FRIDAY:  6:45AM-10:50PM\n" +
                     "SATURDAY-SUNDAY:  CLOSED";
+        }
+    }
+
+    public class threadOperation extends AsyncTask<Void, Void, Void>{
+        String addresses;
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Document doc = Jsoup.connect("https://campusoperations.temple.edu/parking-transportation/garages-lots?campus=4").get();
+                addresses = doc.text();
+                //Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
+                //Elements newsHeadlines = doc.select("#mp-itn b a");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            //text.setText(addresses);
         }
     }
 

@@ -67,7 +67,7 @@ public class WriteReviewActivity extends AppCompatActivity {
                 }
         );
 
-        parkingLotInfo.setReview0("sdfsdfsdf");
+        parkingLotInfo.setReview0("The staff was friendly and the parking space was spacious");
         reviewTextView0.setText(parkingLotInfo.getReview0());
 
     }
