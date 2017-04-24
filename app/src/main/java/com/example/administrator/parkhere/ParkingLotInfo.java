@@ -5,6 +5,8 @@ import android.provider.DocumentsContract;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
@@ -24,6 +26,13 @@ public class ParkingLotInfo {
     private String review2 = "";
     private String review3 = "";
     private String review4 = "";
+
+    private String liacourasGarageAddress = "";
+    private String montgomeryGarageAddress = "";
+    private String fifteenthStreetLotAddress = "";
+    private String tylerLotAddress = "";
+    private String diamondStreetLotAddress = "";
+    private String templeTowersLotAddress = "";
 
 
 
@@ -95,8 +104,7 @@ public class ParkingLotInfo {
 
     public void setParkingLotAddress(String markerName) {
         if (markerName.equals("Diamond Street Lot")) {
-            this.parkingLotAddress = "1140 W. Diamond Street\n" +
-                    "Philadelphia, PA 19122";
+            this.parkingLotAddress = "";
         } else if (markerName.equals("15th Street Lot")) {
             this.parkingLotAddress = "1855 N. 15th Street\n" +
                     "Philadelphia, PA 19122";
@@ -166,29 +174,6 @@ public class ParkingLotInfo {
         }
     }
 
-    public class threadOperation extends AsyncTask<Void, Void, Void>{
-        String addresses;
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                Document doc = Jsoup.connect("https://campusoperations.temple.edu/parking-transportation/garages-lots?campus=4").get();
-                addresses = doc.text();
-                //Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
-                //Elements newsHeadlines = doc.select("#mp-itn b a");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            //text.setText(addresses);
-        }
-    }
 
 }

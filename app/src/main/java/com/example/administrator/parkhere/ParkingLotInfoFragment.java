@@ -1,6 +1,8 @@
 package com.example.administrator.parkhere;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +12,14 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.net.InetAddress;
 
 
 public class ParkingLotInfoFragment extends Fragment {
@@ -25,10 +35,23 @@ public class ParkingLotInfoFragment extends Fragment {
         // Required empty public constructor
     }
 
+    TextView tx2;
+
+    private String parkingLotAddresss;
+
     private String parkingLotName;
     private String parkingLotAddress;
     private String parkingLotRates;
     private String parkingLotHours;
+
+    String output = "";
+
+    private String liacourasGarageAddress = "";
+    private String montgomeryGarageAddress = "";
+    private String fifteenthStreetLotAddress = "";
+    private String tylerLotAddress = "";
+    private String diamondStreetLotAddress = "";
+    private String templeTowersLotAddress = "";
 
     private View layout;
 
@@ -39,6 +62,16 @@ public class ParkingLotInfoFragment extends Fragment {
     private static Button writeReviewButton;
 
 
+
+    private boolean isInternetAvailable(){
+        try{
+            final InetAddress address = InetAddress.getByName("www.google.com");
+            return !address.equals("");
+        } catch (Exception e){
+            return false;
+        }
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,8 +81,10 @@ public class ParkingLotInfoFragment extends Fragment {
 
             ParkingLotInfo parkingLotInfo = new ParkingLotInfo(markerName);
 
+            new parseOperation().execute();
+
             TextView tx1 = (TextView) layout.findViewById(R.id.textView1);
-            TextView tx2 = (TextView) layout.findViewById(R.id.textView2);
+            tx2 = (TextView) layout.findViewById(R.id.textView2);
             TextView tx3 = (TextView) layout.findViewById(R.id.textView3);
             TextView tx4 = (TextView) layout.findViewById(R.id.textView4);
 
@@ -57,9 +92,10 @@ public class ParkingLotInfoFragment extends Fragment {
             parkingLotName = parkingLotInfo.getParkingLotName();
             tx1.setText(parkingLotName);
 
-            parkingLotInfo.setParkingLotAddress(markerName);
-            parkingLotAddress = parkingLotInfo.getParkingLotAddress();
-            tx2.setText(parkingLotAddress);
+            //parkingLotInfo.setParkingLotAddress(markerName);
+            //parkingLotAddress = parkingLotInfo.getParkingLotAddress();
+            //setParkingLotAddresss(markerName);
+            //tx2.setText(parkingLotAddresss);
 
             parkingLotInfo.setParkingLotRates(markerName);
             parkingLotRates = parkingLotInfo.getParkingLotRates();
@@ -126,25 +162,60 @@ public class ParkingLotInfoFragment extends Fragment {
         );
     }
 
-    }
+    public class parseOperation extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Document doc = Jsoup.connect("https://campusoperations.temple.edu/parking-transportation/garages-lots?campus=4").validateTLSCertificates(false).get();
+
+                Elements addresses = doc.select("div.address");
+
+                for (Element e: addresses){
+
+                    output += e.text();
+                    output += "\n";
+
+                }
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
 
-/*
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            String[] lines = output.split(System.getProperty("line.separator"));
+
+            liacourasGarageAddress = lines[4];
+            montgomeryGarageAddress = lines[6];
+            fifteenthStreetLotAddress = lines[0];
+            tylerLotAddress = lines[9];
+            diamondStreetLotAddress = lines[3];
+            templeTowersLotAddress = lines[7];
+
+
+            if (markerName.equals("Diamond Street Lot")) {
+                tx2.setText(diamondStreetLotAddress);
+            } else if (markerName.equals("15th Street Lot")) {
+                tx2.setText(fifteenthStreetLotAddress);
+            } else if (markerName.equals("Liacouras Garage")) {
+                tx2.setText(liacourasGarageAddress);
+            } else if (markerName.equals("Montgomery Garage")) {
+                tx2.setText(montgomeryGarageAddress);
+            } else if (markerName.equals("Tyler Lot")) {
+                tx2.setText(tylerLotAddress);
+            } else if (markerName.equals("Temple Towers Lot")) {
+                tx2.setText(templeTowersLotAddress);
+            }
+
         }
     }
 
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
-    */
+
 
