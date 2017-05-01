@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 
 
+//This is a fragment that shows parking lot's info
 public class ParkingLotInfoFragment extends Fragment {
 
 
@@ -62,7 +63,7 @@ public class ParkingLotInfoFragment extends Fragment {
     private static Button writeReviewButton;
 
 
-
+//This method checks if user has access to internet
     private boolean isInternetAvailable(){
         try{
             final InetAddress address = InetAddress.getByName("www.google.com");
@@ -72,6 +73,8 @@ public class ParkingLotInfoFragment extends Fragment {
         }
     }
 
+    //this method sets texts for parking lot's info
+    //User sees parking lot's info made by this onCreateView method
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,6 +95,8 @@ public class ParkingLotInfoFragment extends Fragment {
             parkingLotName = parkingLotInfo.getParkingLotName();
             tx1.setText(parkingLotName);
 
+        //I commented following lines of codes because I parsed address info from Temple Website
+
             //parkingLotInfo.setParkingLotAddress(markerName);
             //parkingLotAddress = parkingLotInfo.getParkingLotAddress();
             //setParkingLotAddresss(markerName);
@@ -111,6 +116,7 @@ public class ParkingLotInfoFragment extends Fragment {
 
         return layout;
     }
+
 
     public void ratingBarListener() {
         textViewRating = (TextView) layout.findViewById(R.id.textViewRating);
@@ -162,6 +168,10 @@ public class ParkingLotInfoFragment extends Fragment {
         );
     }
 
+    //This class parses parking lot's address from Temple University's website
+    //I also wanted to parse all the other info of parking lot,
+    //but unfortunately they are not provided by the Tempple University website
+    //Simply NOTHING TO PARSE!
     public class parseOperation extends AsyncTask<Void, Void, Void>{
 
         @Override
@@ -181,7 +191,6 @@ public class ParkingLotInfoFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
 
             return null;
         }

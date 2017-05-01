@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context="com.example.administrator.parkhere.ParkingLotInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -54,7 +55,9 @@
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
         android:layout_alignParentStart="true"
-        android:text="Name:  " />
+        android:text="Name:  "
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView12"
@@ -62,7 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/RelativeLayout1"
-        android:text="Address:  " />
+        android:text="Address:  "
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView13"
@@ -70,7 +75,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/RelativeLayout2"
-        android:text="Rates:  " />
+        android:text="Rates:  "
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView14"
@@ -78,7 +85,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/RelativeLayout3"
-        android:text="Hours:  " />
+        android:text="Hours:  "
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView1"
@@ -86,15 +95,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/textView11"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout1"
         android:layout_toEndOf="@+id/textView12"
         android:text="TextView"
-        android:layout_below="@+id/RelativeLayout1" />
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView3"
@@ -102,7 +115,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/RelativeLayout2"
         android:layout_toEndOf="@+id/textView11"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"
@@ -110,7 +125,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/RelativeLayout3"
         android:layout_toEndOf="@+id/textView14"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <RatingBar
         android:id="@+id/ratingBar1"
@@ -127,7 +144,9 @@
         android:layout_below="@+id/RelativeLayout4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="17dp"
-        android:text="Submit" />
+        android:text="Submit"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textViewRating"
@@ -135,7 +154,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/RelativeLayout4"
         android:layout_centerHorizontal="true"
-        android:text="Rating" />
+        android:text="Rating"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/writeReviewButton"
@@ -143,7 +164,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="VIEW A REVIEW" />
+        android:text="VIEW A REVIEW"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

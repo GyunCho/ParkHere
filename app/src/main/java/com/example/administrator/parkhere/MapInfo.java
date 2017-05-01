@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+
+//This class is a page user moves to when user clicks a marker on a homepage (home activity)
+//this class contains a fragment (modular portion of an activity)
+//If a user clicks a info radio button, this activity shows that parking lot's info
+//If a user clicks a picture radio button, this activity shows that parking lot's picture.
 public class MapInfo extends AppCompatActivity {
 
     ParkingLotInfoFragment parkingLotInfoFragment;
@@ -35,11 +40,8 @@ public class MapInfo extends AppCompatActivity {
 
         parkingLotInfoFragment = new ParkingLotInfoFragment();
 
-
         addFragment(R.id.fragContainingInfoOrPicture, parkingLotInfoFragment);
         parkingLotInfoFragment.setMarkerName(markerName);
-
-
     }
 
     public void rbClick(View v) {
@@ -51,6 +53,8 @@ public class MapInfo extends AppCompatActivity {
         parkingLotPictureFragment = new ParkingLotPictureFragment();
 
 
+        //If user clicks a "Info" radio button, this activity creates a info fragment
+        //If user clicks a "Picture" radio button, this activity creates a picture fragment
         if(rb.getText().equals("Info")){
             parkingLotInfoFragment.setMarkerName(markerName);
             addFragment(R.id.fragContainingInfoOrPicture, parkingLotInfoFragment);

@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+//I set up this review activity, but this class is not yet working as I hope
+//because I don't have a database.
+//My app should keep containing ratings and reviews even if user exits and comes back
+//but without db, it can't be implemented yet
 public class WriteReviewActivity extends AppCompatActivity {
 
     private static Button comepleteButton;
@@ -18,7 +23,6 @@ public class WriteReviewActivity extends AppCompatActivity {
     private static TextView reviewTextView1;
     private static TextView reviewTextView2;
     private static TextView reviewTextView3;
-
 
     Bundle bundle;
     private String message;

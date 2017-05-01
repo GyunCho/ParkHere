@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-
+//This class simply shows parking lot's image for clicked parking lot.
+//This class uses images inside this project.
+//As professor said in the class, I think I should've made files containing parking lot's info
+//like parking lot's pictures, address, rates, etc...
 public class ParkingLotPictureFragment extends Fragment {
 
     private View layout;

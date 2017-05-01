@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * Created by GyunCho on 4/9/17.
  */
 
+
+//this class is an adapter class for the spinner (drop-down list) user sees from the home activity.
 public class MapTypesAdapter extends BaseAdapter {
     Context context;
     ArrayList<String> mapTypes;

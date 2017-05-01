@@ -34,9 +34,7 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    boolean firstSelection;
 
-    private static Button navigationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +44,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
-
 
         mMap = googleMap;
 
@@ -75,6 +70,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 String mapType = mapTypes.get(position);
 
+
+                //When user clicks any of menus, it clears all markers
+                //and creates all corresponding markers.
                 if (mapType.equals("Visitor")) {
                     googleMap.clear();
                     VisitorMapMarkers();
@@ -98,13 +96,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         spinner.setOnItemSelectedListener(oicl);
 
-        // Add a marker in Temple University and move the camera
+        // Latitude and Longitude of Temple University
         LatLng templeUniversity = new LatLng(39.981349, -75.155318);
 
-
+        //Move google map to Temple University and zoom it to 15 level
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(templeUniversity, 15));
 
-
+        //Following lines of codes enable markers clickable and when clicked,
+        //it lets users to move to the Parking Lot Info page.
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
@@ -119,6 +118,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+
+        //Following lines of code enables the current location button.
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -134,6 +135,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //Following codes add a search bar onto an app and move the screen to the corresponding place
 
+
+    //Following lines of code enalbes search bar.
+    //Geocoder analyzes the string (Address) and move gMap to that address.
     public void onMapSearch(View view) {
 
         EditText locationSearch = (EditText) findViewById(R.id.searchBar);
@@ -167,6 +171,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    //Following lines of codes make markers for visitor user type
     public void VisitorMapMarkers(){
         // Add markers for parking lots/garages located in Temple University
         LatLng fifteenthStreetLot = new LatLng(39.981538, -75.158967);
@@ -221,6 +227,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    //Following lines of codes make markers for student user type
     public void StudentMapMarkers(){
 
         // Add markers for parking lots/garages located in Temple University
@@ -268,6 +275,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_240sem)));
     }
 
+    //Following lines of codes make markers for faculty user type
     public void FacultyMapMarkers(){
         // Add markers for parking lots/garages located in Temple University
 
@@ -320,7 +328,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_120mon)));
 
     }
-
-
 
 }

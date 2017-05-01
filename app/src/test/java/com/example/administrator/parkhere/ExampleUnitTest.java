@@ -1,5 +1,13 @@
 package com.example.administrator.parkhere;
 
+import android.content.Intent;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -57,4 +65,5 @@ public class ExampleUnitTest {
                 "Philadelphia, PA 19122", parkingLotAddress);
 
     }
+
 }

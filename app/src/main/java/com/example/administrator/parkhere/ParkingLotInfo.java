@@ -14,6 +14,12 @@ import java.io.IOException;
  * Created by GyunCho on 4/13/17.
  */
 
+//This class is simply a ParkinglotInfo class. This class has info about parking lots.
+//I wanted this class doesn't have hard-coded info about parking lots about rates and hours
+//but since Temple University parking lot ebsite only provides info about address
+//I had to do hard coding for Rates and Hours also.
+//You can see address is also hard coded,
+//but that's for the case, users doesn't have access to internet
 public class ParkingLotInfo {
 
     private String parkingLotName;
@@ -33,8 +39,6 @@ public class ParkingLotInfo {
     private String tylerLotAddress = "";
     private String diamondStreetLotAddress = "";
     private String templeTowersLotAddress = "";
-
-
 
     public String getReview0() {
         return this.review0;
@@ -72,12 +76,9 @@ public class ParkingLotInfo {
         this.review4 = string;
     }
 
-
-
     public ParkingLotInfo(String name) {
         this.parkingLotName = name;
     }
-
 
     public static String markerName1 = null;
 
@@ -102,7 +103,10 @@ public class ParkingLotInfo {
     }
 
 
-    public void setParkingLotAddress(String markerName) {
+    //This method doesn't have to be here, but I'm keeping this
+    //in case a user doesn't have access to the internet
+
+    /*public void setParkingLotAddress(String markerName) {
         if (markerName.equals("Diamond Street Lot")) {
             this.parkingLotAddress = "";
         } else if (markerName.equals("15th Street Lot")) {
@@ -122,8 +126,9 @@ public class ParkingLotInfo {
                     "Philadelphia, PA 19122";
         }
 
-    }
+    }*/
 
+    //
     public void setParkingLotRates(String markerName) {
         if (markerName.equals("Diamond Street Lot")) {
             this.parkingLotRates = "$17 per entry for Visitors\n" +
