@@ -105,8 +105,8 @@ public class ParkingLotInfo {
 
     //This method doesn't have to be here, but I'm keeping this
     //in case a user doesn't have access to the internet
-
-    /*public void setParkingLotAddress(String markerName) {
+    //This method is also used to for test cases to check if getters and setters are working fine
+    public void setParkingLotAddress(String markerName) {
         if (markerName.equals("Diamond Street Lot")) {
             this.parkingLotAddress = "";
         } else if (markerName.equals("15th Street Lot")) {
@@ -126,7 +126,7 @@ public class ParkingLotInfo {
                     "Philadelphia, PA 19122";
         }
 
-    }*/
+    }
 
     //
     public void setParkingLotRates(String markerName) {
